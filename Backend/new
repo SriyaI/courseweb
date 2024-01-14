@@ -1,0 +1,97 @@
+import React, { useState, useEffect } from 'react';
+import './Form.css';
+import axios from 'axios';
+const { MongoClient } = require('mongodb');
+
+const Form = () => {
+  const [formData, setFormData] = useState({
+    userName: '',
+    password: '',
+  });
+
+  useEffect(() => {
+    // Initialize form data state with empty values
+    setFormData({
+      userName: '',
+      password: '',
+    });
+  }, []);
+
+  const handleChange = (e) => {
+    // Update the corresponding field in the form data state
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
+    try {
+      // Connect to the MongoDB server
+      const client = new MongoClient('mongodb://localhost:27017/', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+
+      await client.connect();
+      
+      // Access the target database and collection
+      const db = client.db('your_database_name');
+      const collection = db.collection('your_collection_name');
+
+      // Insert the form data into the collection
+      await collection.insertOne({
+        userName: formData.userName,
+        password: formData.password,
+      });
+
+      // Close the connection
+      await client.close();
+
+      // Optional: Notify the user about the successful registration
+      alert('Registration successful!');
+    } catch (error) {
+      console.error('Error inserting data into MongoDB:', error);
+      // Optional: Notify the user about the registration failure
+      alert('Registration failed. Please try again later.');
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="container">
+        <h1>Register</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr />
+
+        <label htmlFor="email"><b>Email</b></label>
+        <input
+          type="text"
+          placeholder="Enter Email"
+          name="userName"
+          id="email"
+          value={formData.userName}
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="psw"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="password"
+          id="psw"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+
+        <button type="submit" className="registerbtn">Register</button>
+      </div>
+    </form>
+  );
+};
+
+export default Form;
