@@ -1,0 +1,33 @@
+.Header img{
+    right:0%;
+    height:3em;
+    width:3em;
+    bottom:0%;
+}
+
+.Header #add-button {
+    position: absolute;
+    top: 5px;
+    left: 5%;
+    height: 3em;
+    bottom: 0;
+    background-color: transparent;
+}
+
+.Header #login-button {
+    position: absolute;
+    top: 5px;
+    left: 10%;
+    height: 3em;
+    bottom: 0;
+    background-color: transparent;
+}
+
+.Header #add-course-button {
+    position: absolute;
+    top: 5px;
+    left: 15%;
+    height: 3em;
+    bottom: 0;
+    background-color: transparent;
+}
