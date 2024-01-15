@@ -4,8 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-server": "cd Backend && npm install",
-    "start-server": "cd Backend && node app.js",
     "install-client": "cd frontend-course-web && npm install",
     "build-client": "cd frontend-course-web && npm run build",
     "start-client": "cd frontend-course-web && npm run start"
