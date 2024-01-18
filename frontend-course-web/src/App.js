@@ -12,6 +12,7 @@ import Courses from './Courses';
 import PostCourse from './PostCourse';
 import Card from './Card';
 import AddCourse from './AddCourse';
+import RegisteredCourse from './RegisteredCourse';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
       <>
         <main>
             <nav>
-              <div class="navbar">
+              <div className="navbar">
                 <div class="logo"><a href="#">CourseWeb</a></div>
                 <ul class="menu">
                   <li><a href="/">Home</a></li>
@@ -40,6 +41,7 @@ function App() {
             <Route path="/my-courses/:userID" element={<PostCourse />} exact />
             <Route path="/card" element={<Card />} exact />
             <Route path="/add-course" element={<AddCourse />} exact />
+            <Route path="/added-course" element={<RegisteredCourse />} exact />
           </Routes>
         </main>
       </>

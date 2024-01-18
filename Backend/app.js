@@ -23,7 +23,7 @@ app.post('/addImage/post/:userID', async (req, res) => {
     const course = new Course({
       name,
       userID,
-      inMyCourse: false,
+      inMyCourse:true 
     });
 
     await course.save();
@@ -50,7 +50,7 @@ app.get('/addImage/post/:userID', async (req, res) => {
 
 app.put('/addImage/post/:userID', async (req, res) => {
   const { userID } = req.params;
-  const {name}=req.body;
+  const {name,inMyCourse}=req.body;
   console.log("checking...")
   console.log({name});
 
@@ -64,7 +64,7 @@ app.put('/addImage/post/:userID', async (req, res) => {
     }
 
     // Update the inMyCourse property
-    course.inMyCourse = true;
+    course.inMyCourse = !inMyCourse;
 
     // Save the updated course to the database
     await course.save();
@@ -80,8 +80,8 @@ app.put('/addImage/post/:userID', async (req, res) => {
 
 
 mongoose.connect(
-   // "mongodb+srv://admin:LMErhaag1j3cMb0U@cluster0.qbe7oee.mongodb.net/"
-    "mongodb://localhost:27017/admin"
+    "mongodb+srv://courseweb:LMErhaag1j3cMb0U@cluster0.qbe7oee.mongodb.net/"
+   // "mongodb://localhost:27017/admin"
  ).then(()=>console.log("Connected to Database"))
   .then(()=>{app.listen(5000);}
   ).catch();

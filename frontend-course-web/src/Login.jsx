@@ -54,7 +54,7 @@ const Submit = () => {
     <div className="login-div">
 
         <head> 
-            <title>GeeksforGeeks Registration</title> 
+            <title>CourseWeb Registration</title> 
             <link rel="stylesheet" 
                 href="style.css" /> 
         </head> 

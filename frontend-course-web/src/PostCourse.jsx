@@ -15,8 +15,6 @@ const AddImage = () => {
     const fetchData = async () => {
       try {
         const response = await Axios.get(`http://localhost:5000/addImage/post/${userID}`);
-        console.log("this is the response in get");
-        console.log(response.data);
         setImageData(response.data.courses);
       } catch (error) {
         console.error('Error while fetching image data:', error);
@@ -30,8 +28,6 @@ const AddImage = () => {
     const fetchData = async () => {
       try {
         const response = await Axios.get(`http://localhost:5000/add-course`);
-        console.log("response.data.forms this is");
-        console.log(response.data.forms);
         setCourseData(response.data.forms);
 
       } catch (error) {
@@ -42,10 +38,7 @@ const AddImage = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    console.log("this is course data");
-    console.log(courseData);
-  }, [courseData]);
+
 
   const handleSubmitSubmit = async (e) => {
     e.preventDefault();
@@ -119,10 +112,6 @@ const handleSubmit = async (e) => {
   
       // Get the courseData for the current image
       const { text, image } = getCourseDataForImage(courseData, imageId);
-  
-      // Now you have the 'text' and 'image' values for the current image
-      console.log('Text:', text);
-      console.log('Image:', image);
   
       return;
     }

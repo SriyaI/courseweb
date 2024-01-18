@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import './Form.css';
 import axios from 'axios';
+import RegisteredCourse from './RegisteredCourse';
 
 const AddCourse = () => {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     courseName: '',
     image: '',
@@ -37,6 +42,7 @@ const AddCourse = () => {
         header:formData.header,
         text:formData.text
     })
+    navigate('/added-course')
   };
 
   return (
