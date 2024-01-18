@@ -80,7 +80,8 @@ app.put('/addImage/post/:userID', async (req, res) => {
 
 
 mongoose.connect(
-    "mongodb+srv://courseweb:LMErhaag1j3cMb0U@cluster0.qbe7oee.mongodb.net/"
+  "mongodb+srv://sriyaivaturi:sriya1234@cluster0.5reps0y.mongodb.net/"  
+  //"mongodb+srv://courseweb:LMErhaag1j3cMb0U@cluster0.qbe7oee.mongodb.net/"
    // "mongodb://localhost:27017/admin"
  ).then(()=>console.log("Connected to Database"))
   .then(()=>{app.listen(5000);}
